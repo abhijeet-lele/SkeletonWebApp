@@ -41,6 +41,19 @@ public class QueryProcessor {
         Long val = numbers.stream().reduce(0L,(a,b)-> a+b);
         return val.toString();
     }
+    if (query.contains("minus") ) {
+        String sentence = query;
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(sentence);
+        List<Long> numbers = new ArrayList<>(0);
+        while (matcher.find()) {
+          
+            numbers.add(0, Long.parseLong(matcher.group()));
+          
+        }
+        Long val = numbers.stream().reduce(0L,(a,b)-> a-b);
+        return val.toString();
+    }
     return "";
   }
 }
